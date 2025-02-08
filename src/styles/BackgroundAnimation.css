@@ -1,0 +1,45 @@
+/* Title Wrapper */
+.title-animation {
+  position: relative;
+  display: inline-block;
+  overflow: hidden; /* Ensures cubes stay inside */
+}
+
+/* Animation Background for Title */
+.title-background-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  z-index: -1; /* Keeps cubes behind the text */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Individual Animated Cubes */
+.cube {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: solid 1px #4285f4;
+  transform-origin: center;
+  transform: scale(0) rotate(0deg);
+  animation: cube 6s ease-in forwards infinite;
+}
+
+.cube:nth-child(2n) { border-color: #0f9d58; }
+.cube:nth-child(3n) { border-color: #f4b400; }
+.cube:nth-child(4n) { border-color: #db4437; }
+
+/* Cube Animation */
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: scale(5) rotate(360deg);
+    opacity: 0;
+  }
+}
