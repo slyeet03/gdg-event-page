@@ -13,6 +13,8 @@ function EventDetails() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const typewriterRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,7 +38,7 @@ function EventDetails() {
       timeoutRef.current = setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
         startCycling();
-      }, 3000); // Correct delay of 3 seconds
+      }, 3000);
     };
 
     startCycling();
@@ -56,6 +58,28 @@ function EventDetails() {
     );
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const typewriterWrapper = document.querySelector(".typewriter-wrapper");
+    const typewriter = document.querySelector(
+      ".typewriter-wrapper .Typewriter",
+    );
+
+    if (typewriter && typewriterWrapper) {
+      typewriterWrapper.style.width = typewriter.offsetWidth + "px";
+    }
+  }, []);
+
   return (
     <div className="event-details">
       <section ref={(el) => (sectionRefs.current[0] = el)} className="hero">
@@ -67,35 +91,37 @@ function EventDetails() {
                   <div key={i} className="cube"></div>
                 ))}
               </div>
-              <span className="typewriter-wrapper">
-                <Typewriter
-                  textStyle={{
-                    fontFamily: "Courier New",
-                    fontWeight: "600",
-                    fontSize: "4rem",
-                    color: "#333",
-                    display: "inline-block",
-                  }}
-                  startDelay={100}
-                  cursorColor="orange"
-                  multiText={["Solution Challenge 2025"]}
-                  typeSpeed={100}
-                  loop={true}
-                  multiTextLoop={true}
-                />
-              </span>
+              {!isMobile ? (
+                <span className="typewriter-wrapper" ref={typewriterRef}>
+                  <Typewriter
+                    textStyle={{
+                      fontFamily: "Courier New",
+                      fontWeight: "600",
+                      fontSize: "4rem",
+                      color: "#333",
+                      display: "inline-block",
+                    }}
+                    startDelay={100}
+                    cursorColor="orange"
+                    multiText={["Solution Challenge 2025"]}
+                    typeSpeed={100}
+                    loop={true}
+                    multiTextLoop={true}
+                  />
+                </span>
+              ) : (
+                <span>SuperMove Tour dAppathon</span>
+              )}
             </div>
           </h1>
         </div>
 
         <p className="event-tagline">
-          <span className="word1">Innovate.</span>
-          <span className="word2"> Connect.</span>
-          <span className="word3"> Inspire.</span>
-                  
+          <span className="word1">Innovate. </span>
+          <span className="word2">Connect. </span>
+          <span className="word3">Inspire. </span>
         </p>
       </section>
-
       <section
         ref={(el) => (sectionRefs.current[1] = el)}
         className="event-description"
