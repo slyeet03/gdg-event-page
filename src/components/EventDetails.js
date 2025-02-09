@@ -110,7 +110,7 @@ function EventDetails() {
                   />
                 </span>
               ) : (
-                <span>Solution Challenge 2025</span>
+                <span><b>Solution Challenge 2025<b/></span>
               )}
             </div>
           </h1>
