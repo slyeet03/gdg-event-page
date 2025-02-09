@@ -37,7 +37,7 @@
   overflow: hidden;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+/*   color: transparent; */
   background-image: linear-gradient(90deg, #ff6b6b, #ffb142, #1dd1a1, #54a0ff);
   font-weight:  bold;
 }
