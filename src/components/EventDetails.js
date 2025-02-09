@@ -110,7 +110,7 @@ function EventDetails() {
                   />
                 </span>
               ) : (
-                <span>SuperMove Tour dAppathon</span>
+                <span>Solution Challenge 2025</span>
               )}
             </div>
           </h1>

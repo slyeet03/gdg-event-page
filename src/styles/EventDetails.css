@@ -92,7 +92,7 @@
 
 .event-highlights h2 {
   font-size: 2.5rem;
-  animation: glowingRed 4s ease-in-out infinite alternate;
+  /*animation: glowingRed 4s ease-in-out infinite alternate;*/
 
   color: #ea4335;
 }
@@ -260,7 +260,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   color: #34a853;
-  animation: glowingGreen 4s ease-in-out infinite alternate;
+  /* animation: glowingGreen 4s ease-in-out infinite alternate;*/
 }
 @keyframes glowingGreen {
   0% {
@@ -479,4 +479,3 @@
     font-size: 2rem; /* Adjust font size for mobile if needed */
   }
 }
-
